@@ -15,7 +15,7 @@ class TestMenstruationFunction(TestCase):
 
 		get_ovulation(information)
 		get_fertility_window(information)
-		get_next_period(information)	
+		get_next_period(information)
 
 
 	def test_menstruation_day_check(self):
