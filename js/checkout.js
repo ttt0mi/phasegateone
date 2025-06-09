@@ -198,7 +198,7 @@ while(true){
 					break;
 				}
 
-				default: print("invalid choice, try again");
+				default: console.log("invalid choice, try again");
 
 			}
 		} 
