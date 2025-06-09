@@ -118,6 +118,7 @@ def customer_payment(cost):
 
 
 
+
 def product_list(catalogue):
 
 	item_width = max(len(purchase[0]) for purchase in catalogue)
@@ -126,7 +127,7 @@ def product_list(catalogue):
 	total_width = max(len(str(purchase[3])) for purchase in catalogue)
 
 	for purchase in catalogue:
-		print(f"\t\t{purchase[0]:>{item_width}}\t{purchase[1]:>{unit_width}}\t{purchase[2]:>{price_width}}\t\t{purchase[3]:>{total_width}}\n")
+		print(f"\t\t{purchase[0]:>{item_width}}\t{purchase[1]:>{unit_width}}\t{purchase[2]:>{price_width}.2f}\t\t{purchase[3]:>{total_width}.2f}\n")
 
 
 
@@ -160,20 +161,20 @@ def invoice(catalogue, customer_name, cashier_info):
 
 	=======================================================
 		ITEM	QTY	PRICE(£)	TOTAL(£)
-	--------------------------------------------------------
+	-------------------------------------------------------
 	""")
 
 	product_list(catalogue)
 
 	print(f"""
-	--------------------------------------------------------
-				Sub Total:	{bill:>7}
-				Discount:	{bill_discount:>7}
-				VAT @17.5%:	{VAT_discount:>7}
+	-------------------------------------------------------
+				Sub Total:	{bill:>7.2f}
+				Discount:	{bill_discount:>7.2f}
+				VAT @17.5%:	{VAT_discount:>7.2f}
 	=======================================================
-				Bill Total:	{new_bill:>7}
+				Bill Total:	{new_bill:>7.2f}
 	=======================================================
-	THIS IS NOT A RECEIPT KINDLY PAY {new_bill}
+		THIS IS NOT A RECEIPT KINDLY PAY {new_bill:.2f}
 	=======================================================
 
 	""")
@@ -219,13 +220,13 @@ def receipt(catalogue, customer_name, cashier_info, payment):
 	product_list(catalogue)
 	print(f"""
 	--------------------------------------------------------
-				Sub Total:	{bill:>7}
-				Discount:	{bill_discount:>7}
-				VAT @17.5%:	{VAT_discount:>7}
+				Sub Total:	{bill:>7.2f}
+				Discount:	{bill_discount:>7.2f}
+				VAT @17.5%:	{VAT_discount:>7.2f}
 	=======================================================
-				Bill Total:	{new_bill:>7}
-				Payment:	{payment:>7}
-				Balance:	{balance:>7}
+				Bill Total:	{new_bill:>7.2f}
+				Payment:	{payment:>7.2f}
+				Balance:	{balance:>7.2f}
 	=======================================================
 				HAPPY BOMBING
 	=======================================================
@@ -236,7 +237,7 @@ def receipt(catalogue, customer_name, cashier_info, payment):
 
 
 
-"""
+
 
 catalogue = []
 proceed = True
@@ -284,5 +285,4 @@ while True:
 #round all values to 2 d.p in invoice & receipt functions
 
 
-"""
 

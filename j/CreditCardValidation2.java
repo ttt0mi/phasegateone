@@ -26,9 +26,11 @@ public class CreditCardValidation{
 	}
 
 
-	public static String cardIssuer(String cardNumber){
+	public static String cardIssuer(String cardNumber, boolean checker){
 
 		if(cardNumber.length() <= 13 || cardNumber.length() > 16) return "Invalid Card Length";
+
+		if(!checker) return "Invalid";
 
 		else if(cardNumber.startsWith("4")) return "Visa";
 
@@ -38,7 +40,7 @@ public class CreditCardValidation{
 
 		else if(cardNumber.startsWith("37")) return "American Express";
 
-		else return "Invalid Card Issuer";
+		else return "Invalid";
 
 	}
 
@@ -50,14 +52,12 @@ public class CreditCardValidation{
 		System.out.print("what is your card number? ");
 		String cardNumber = input.next();
 
-		String issuer = cardIssuer(cardNumber);
 		boolean checker = validation(cardNumber);
+		String issuer = cardIssuer(cardNumber, checker);
 
-
-		if(issuer.equals("Invalid Card Issuer") || issuer.equals("Invalid Card Length")) checker = false;
+		if(issuer.equals("Invalid")) checker = false;
 		
 		String validCheck = checker ? "valid" : "invalid";
-
 
 		System.out.println("Credit Card Type: " + issuer);
 		System.out.println("Credit Card Number: " + cardNumber);

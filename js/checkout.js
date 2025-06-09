@@ -4,8 +4,10 @@ const prompt = require("prompt-sync")();
 
 function unitCheck(unit){
 
-	if(isNaN(Number(unit))) return false
-	else return true
+	if(isNaN(Number(unit))) return false;
+	else
+	if(Number.isInteger(Number(unit))) return true;
+	else return false
 
 }
 
@@ -42,19 +44,19 @@ function paymentCheck(payment, bill){
 
 
 
-function invoice(cart, customerName, cashierName, discount){
+function invoice(catalogue, customerName, cashierName, discount){
 
 	const date = new Date().toLocaleString();
-	
 
 	let bill = 0;
-	for(const item of cart){
+	for(const item of catalogue){
 		bill += item[3];
 	}
 
+	discount = Number(discount);
 	let billDiscount = Number(bill * (discount / 100));
 	let VATDiscount = Number(bill * 0.175);
-	let newBill = Number(bill - billDiscount);
+	let newBill = Number(bill - (billDiscount + VATDiscount);
 
 	console.log(`
 
@@ -71,19 +73,19 @@ function invoice(cart, customerName, cashierName, discount){
 	--------------------------------------------------------
 	`);
 
-	for(const item of cart){
-		console.log(`\t\t${item[0]}\t${item[1]}\t${item[2]}\t\t${item[3]}\n`)
+	for(const item of catalogue){
+		console.log(`\t\t${item[0]}\t${item[1]}\t${item[2].toFixed(2)}\t\t${item[3].toFixed(2)}\n`)
 	}
 
 	console.log(`
 	--------------------------------------------------------
-				Sub Total:	${bill}
-				Discount:	${billDiscount}
-				VAT @17.5%:	${VATDiscount}
+				Sub Total:	${bill.toFixed(2)}
+				Discount:	${billDiscount.toFixed(2)}
+				VAT @17.5%:	${VATDiscount.toFixed(2)}
 	=======================================================
-				Bill Total:	${newBill}
+				Bill Total:	${newBill.toFixed(2)}
 	=======================================================
-	THIS IS NOT A RECEIPT KINDLY PAY ${newBill}
+	THIS IS NOT A RECEIPT KINDLY PAY ${newBill.toFixed(2)}
 	=======================================================
 
 	`);
@@ -94,18 +96,21 @@ function invoice(cart, customerName, cashierName, discount){
 
 
 
-function receipt(cart, customerName, cashierName, discount, payment){
+function receipt(catalogue, customerName, cashierName, discount, payment){
 
 	const date = new Date().toLocaleString();
 
 	let bill = 0;
-	for(const item of cart){
+	for(const item of catalogue){
 		bill += item[3];
 	}
 
+	discount = Number(discount)
+	payment = Number(payment)
+
 	let billDiscount = Number(bill * (discount / 100));
 	let VATDiscount = Number(bill * 0.175);
-	let newBill = Number(bill - billDiscount);
+	let newBill = Number(bill - (billDiscount + VATDiscount);
 	let balance = Number(payment - newBill);
 	
 
@@ -124,19 +129,19 @@ function receipt(cart, customerName, cashierName, discount, payment){
 	--------------------------------------------------------
 	`);
 
-	for(const item of cart){
-		console.log(`\t\t${item[0]}\t${item[1]}\t${item[2]}\t\t${item[3]}\n`)
+	for(const item of catalogue){
+		console.log(`\t\t${item[0]}\t${item[1]}\t${item[2].toFixed(2)}\t\t${item[3].toFixed(2)}\n`)
 	}
 
 	console.log(`
 	--------------------------------------------------------
-				Sub Total:	${bill}
-				Discount:	${billDiscount}
-				VAT @17.5%:	${VATDiscount}
+				Sub Total:	${bill.toFixed(2)}
+				Discount:	${billDiscount.toFixed(2)}
+				VAT @17.5%:	${VATDiscount.toFixed(2)}
 	=======================================================
-				Bill Total:	${newBill}
-				Payment:	${payment}
-				Balance:	${balance}
+				Bill Total:	${newBill.toFixed(2)}
+				Payment:	${payment.toFixed(2)}
+				Balance:	${balance.toFixed(2)}
 	=======================================================
 					HAPPY BOMBING
 	=======================================================
@@ -150,7 +155,7 @@ function receipt(cart, customerName, cashierName, discount, payment){
 
 
 
-const cart = [];
+const catalogue = [];
 let proceed = true;
 
 
@@ -178,7 +183,7 @@ while(true){
 		price = Number(price);
 		let total = units * price;
 
-		cart.push([item, units, price, total]);
+		catalogue.push([item, units, price, total]);
 
 		
 		while(proceed){
@@ -208,9 +213,7 @@ while(true){
 			continue;
 		}
 
-		discount = Number(discount);
-
-		let bill = invoice(cart, customerName, cashierName, discount);
+		let bill = invoice(catalogue, customerName, cashierName, discount);
 
 		while(true){
 			let payment = prompt("Your Payment: ");
@@ -219,7 +222,7 @@ while(true){
 				continue;
 			}
 
-			receipt(cart, customerName, cashierName, discount, payment);
+			receipt(catalogue, customerName, cashierName, discount, payment);
 			break;
 		}
 		break;

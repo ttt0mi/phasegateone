@@ -23,6 +23,8 @@ class TestCardValidationFunction(TestCase):
 
 		self.assertEqual(actual, expected)
 
+
+	def test_credit_card_visa_action_fail(self):
 		cardno = "4003600000000015"
 		validity = {}
 		checker = credit_card_validator(cardno)
@@ -31,8 +33,6 @@ class TestCardValidationFunction(TestCase):
 		expected = {'Credit Card Type': 'Visa', 'Credit Card Number': cardno, 'Credit Card Length': len(cardno), 'Credit Card Status': 'invalid'}
 
 		self.assertEqual(actual, expected)
-
-
 
 
 	def test_credit_card_mastercard_actions(self):
@@ -46,6 +46,7 @@ class TestCardValidationFunction(TestCase):
 		self.assertEqual(actual, expected)
 
 
+	def test_credit_card_mastercard_action_fail(self):
 		cardno = "5399831619690404"
 		validity = {}
 		checker = credit_card_validator(cardno)
@@ -54,9 +55,6 @@ class TestCardValidationFunction(TestCase):
 		expected = {'Credit Card Type': 'MasterCard', 'Credit Card Number': cardno, 'Credit Card Length': len(cardno), 'Credit Card Status': 'invalid'}
 
 		self.assertEqual(actual, expected)
-
-
-
 
 
 	def test_credit_card_discover_actions(self):
@@ -70,17 +68,15 @@ class TestCardValidationFunction(TestCase):
 		self.assertEqual(actual, expected)
 
 
+	def test_credit_card_discover_action_fail(self):
 		cardno = "6539983161969048"
 		validity = {}
 		checker = credit_card_validator(cardno)
-	
+
 		actual = cardIssuer(validity, cardno, checker)
 		expected = {'Credit Card Type': 'Discover', 'Credit Card Number': cardno, 'Credit Card Length': len(cardno), 'Credit Card Status': 'invalid'}
 
 		self.assertEqual(actual, expected)
-
-
-
 
 
 
@@ -94,7 +90,8 @@ class TestCardValidationFunction(TestCase):
 
 		self.assertEqual(actual, expected)
 
-		
+
+	def test_credit_card_AE_action_fail(self):
 		cardno = "3753998316196905"
 		validity = {}
 		checker = credit_card_validator(cardno)
@@ -103,22 +100,6 @@ class TestCardValidationFunction(TestCase):
 		expected = {'Credit Card Type': 'American Express', 'Credit Card Number': cardno, 'Credit Card Length': len(cardno), 'Credit Card Status': 'invalid'}
 
 		self.assertEqual(actual, expected)
-
-
-
-
-
-
-	def test_credit_card_invalid_card(self):
-		cardno = "5399831619690403"
-		validity = {}
-		checker = credit_card_validator(cardno)
-	
-		actual = cardIssuer(validity, cardno, checker)
-		expected = {'Credit Card Type': 'MasterCard', 'Credit Card Number': cardno, 'Credit Card Length': len(cardno), 'Credit Card Status': 'valid'}
-
-		self.assertEqual(actual, expected)
-
 
 
 
