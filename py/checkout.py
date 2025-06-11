@@ -9,7 +9,7 @@ def name_check(name):
 	if name.startswith(" ") or name.endswith(" "):
 		return "Invalid space present"
 
-	new_name = name.replace(" ","")
+	new_name = name.replace("-", "").replace(" ", "")
 
 	if len(new_name) < 2 or len(new_name) > 30:
 		return "Character limit error"
