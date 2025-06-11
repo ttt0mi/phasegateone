@@ -105,6 +105,45 @@ class TestMBTIFunction(TestCase):
 		self.assertEqual(personality, "P", "choose perceptive options")
 
 
+	def test_MBTI_check_personality_type(self):
+		energy = "I"
+		cognitive = "N"
+		value = "F"
+		life = "P"
+
+		actual = type(energy, cognitive, value, life)
+		expected = "INFP"
+		self.assertEqual(actual, expected)
+
+		self.assertEqual(type("I", "N", "T", "J"), "INTJ")
+		self.assertEqual(type("I", "N", "F", "J"), "INFJ")
+		self.assertEqual(type("I", "N", "T", P"), "INTP")
+		self.assertEqual(type("E", "N", "F", "P"), "ENFP")
+		self.assertEqual(type("E", "N", "T", "J"), "ENTJ")
+		self.assertEqual(type("E", "N", "T", "P"), "ENTP")
+		self.assertEqual(type("E", "N", "F", "J"), "ENFJ")
+		self.assertEqual(type("I", "S", "F", "J"), "ISFJ")
+		self.assertEqual(type("I", "S", "F", "P"), "ISFP")
+		self.assertEqual(type("I", "S", "T", "J"), "ISTJ")
+		self.assertEqual(type("I", "S, "T", "P"), "ISTP")
+		self.assertEqual(type("E", "S", "F", "J"), "ESFJ")
+		self.assertEqual(type("E", "S", "F", "P"), "ESFP")
+		self.assertEqual(type("E", "S", "T", "J"), "ESTJ")
+		self.assertEqual(type("E", "S", "T", "P"), "ESTP")
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
 
 
 
