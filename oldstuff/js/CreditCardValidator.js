@@ -4,7 +4,9 @@ const prompt = require("prompt-sync")();
 function check(cardNumber){
 
 	if(isNaN(Number(cardNumber))) return false;
-	else return true;
+	else
+	if(Number.isInteger(Number(cardNumber))) return true;
+	else return false
 
 }
 

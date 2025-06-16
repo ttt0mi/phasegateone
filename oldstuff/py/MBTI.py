@@ -34,7 +34,6 @@ def name_check(name):
 	if not name or name.isspace(): return False
 	if name.startswith(invalids) or name.endswith(invalids): return False
 	if len(temp) not in range(2, 41): return False
-	if any(char == ' ' for char in name[:2]): return False
 	if temp.isalnum(): return True
 	else: return False
 

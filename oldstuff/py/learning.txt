@@ -1,0 +1,145 @@
+
+grades = {"student 1": [67, 21, 49, 137, 45.67], "student 2" : [98, 62, 56,216, 72.00], "student 3" : [93, 34, 27, 154, 51.33], "student 4" : [78, 83, 66, 227, 75.67]}	
+
+averages = sorted([v[4] for v in grades.values()], reverse=True)
+		
+for item in grades.values():
+	for pos, avg in enumerate(averages, 1):
+
+		if item[4] == avg: item.append(pos)
+
+print(grades)
+
+
+"""
+or
+grades = {"student 1": [67, 21, 49, 137, 45.67], "student 2" : [98, 62, 56,216, 72.00], "student 3" : [93, 34, 27, 154, 51.33], "student 4" : [78, 83, 66, 227, 75.67]}
+
+averages = sorted([v[4] for v in grades.values()], reverse=True)
+
+for item in grades.values():
+	temp = [item.append(pos) for pos, avg in enumerate(averages, 1) if item[4] == avg]	
+
+
+print(grades)
+
+"""
+
+#learn about decimal module
+
+
+const grades = {"student 1" : {'s1' : 67, 's2' : 21, 's3' : 49, 'total' : 137, 'avg' : 45.67}, "student 2" : {'s1' : 98, 's2' : 62, 's3' : 56, 'total' : 216, 'avg' : 72.00}};
+
+const averages = [];
+for(const item of Object.values(grades)) averages.push(item.avg);
+
+
+
+
+
+
+
+
+
+
+	averages = sorted([item[len(item)-1] for item in grades.values()], reverse=True)
+
+	for item in grades.values():
+		for pos, avg in enumerate(averages, 1):
+			if item[len(item)-1] == avg: item.append(pos)
+		
+	return grades
+
+
+
+for(const [student, details] of Object.entries(grades))
+
+
+for(const [index, avg] of Object.entries(item)){
+	console.log(Number(index) + 1);
+
+
+
+
+for(let [index, avg] of Object.entries(item)){
+
+	index = Number(index);
+
+	if(item[item.length - 1] == avg)
+	averages.push(index + 1)
+
+
+
+
+
+
+
+
+
+let subject_columns = grades["student 1"].length - 3;
+
+for(let i = 1; i < subject_columns; i++)
+
+for student, details in grades.items():
+
+for(const [student, details] of Object.entries(grades)){
+
+
+
+
+
+
+
+
+
+
+
+
+	highest_passes, lowest_fails = 0, 0
+	highest_passes_subj, lowest_fails_subj = " ", " "
+
+
+
+	console(f"""
+The hardest subject is ${lowest_fails_subj} with a failure count of ${lowest_fails} 
+The easiest subject is ${highest_passes_subj} with a pass count of ${highest_passes} 
+The overall highest score is scored by ${max_name} in ${max_subj} scoring ${max}
+The overall lowest score is scored by ${min_name} in ${min_subj} scoring ${min}
+========================================
+
+CLASS SUMMARY
+========================================
+best graduating student is: ${highest_name} scoring ${highest}
+========================================
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+worst graduating student is: ${lowest_name} scoring ${lowest} 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+========================================
+class total score is: ${total}
+class average score is: ${average}
+========================================
+		""")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
