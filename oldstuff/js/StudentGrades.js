@@ -6,7 +6,7 @@ function numCheck(num){
 
 
 	
-	if(num.length == 0 || num == 0) return false;
+	if(num.length == 0 || num < 1) return false;
 	else
 	if(isNaN(Number(num))) return false;
 	else

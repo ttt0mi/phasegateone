@@ -144,7 +144,7 @@ def invoice(catalogue, customer_name, cashier_info):
 		bill += purchase[3]
 
 	bill_discount = round(bill * (discount / 100), 2)
-	VAT_discount = round(bill * 0.175, 2)
+	VAT_discount = round(bill * 0.075, 2)
 	new_bill = round(bill - (bill_discount + VAT_discount), 2)
 
 	
@@ -170,7 +170,7 @@ def invoice(catalogue, customer_name, cashier_info):
 	-------------------------------------------------------
 				Sub Total:	{bill:>7.2f}
 				Discount:	{bill_discount:>7.2f}
-				VAT @17.5%:	{VAT_discount:>7.2f}
+				VAT @7.5%:	{VAT_discount:>7.2f}
 	=======================================================
 				Bill Total:	{new_bill:>7.2f}
 	=======================================================
@@ -196,7 +196,7 @@ def receipt(catalogue, customer_name, cashier_info, payment):
 		bill += purchase[3]
 
 	bill_discount = round(bill * (discount / 100), 2)
-	VAT_discount = round(bill * 0.175, 2)
+	VAT_discount = round(bill * 0.075, 2)
 	new_bill = round(bill - (bill_discount + VAT_discount), 2)
 	balance = round(payment - new_bill, 2)
 
@@ -222,7 +222,7 @@ def receipt(catalogue, customer_name, cashier_info, payment):
 	--------------------------------------------------------
 				Sub Total:	{bill:>7.2f}
 				Discount:	{bill_discount:>7.2f}
-				VAT @17.5%:	{VAT_discount:>7.2f}
+				VAT @7.5%:	{VAT_discount:>7.2f}
 	=======================================================
 				Bill Total:	{new_bill:>7.2f}
 				Payment:	{payment:>7.2f}
